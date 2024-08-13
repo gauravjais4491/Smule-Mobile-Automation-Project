@@ -20,7 +20,8 @@ class BasePaths {
             HomePageToActivityPage: require('../ActivityFlow/HomePageToActivityPage/HomePageToActivityPage.js'),
             Notification: require('../ActivityFlow/Notifications/Notification.js'),
             Invites: require('../ActivityFlow/Invites/Invites.js'),
-            News: require('../ActivityFlow/News/News.js')
+            News: require('../ActivityFlow/News/News.js'),
+            screenshotDir: require('../../../Screenshots') 
 
         }
     }

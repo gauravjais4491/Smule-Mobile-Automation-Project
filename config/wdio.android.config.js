@@ -15,6 +15,7 @@ config.port = 4723;
         }
         
     ]
+
 config.specs = [
     // '../test/specs/SongFlow.spec.js'
     // '../test/specs/MessageChatFlow.spec.js'
@@ -22,6 +23,7 @@ config.specs = [
     '../test/specs/Login.spec.js',
     // '../test/specs/SongbookFlow.spec.js'
     // '../test/specs/ActivityFlow.spec.js'
+    // '../test/specs/selected'
 
 ]
 

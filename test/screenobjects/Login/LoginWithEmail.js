@@ -94,13 +94,13 @@ class SignIn{
     async setPasswordForNewUser(password){
         await this.newUserEmailPassword.setValue(password)
         await this.next.click() 
-        await expect(this.next).toBeExisting()
+        await expect(await this.next).toBeExisting()
         await this.next.click()
     }
     async setProfilePhoto(){
         await this.photoBtn.click()
         await this.selectPhotoMode.click()
-        await expect(this.takePhoto).toBeExisting()
+        await expect(await this.takePhoto).toBeExisting()
         await this.takePhoto.click() 
         await this.confirmPhoto.click() 
         await driver.pause(2000)

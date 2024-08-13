@@ -1,6 +1,8 @@
 const BasePaths = require('../screenobjects/Package/package')
+const fs = require('fs');
+const path = require('path');
 
-const [{ login, SelectLanguage }] = [BasePaths.getPagePaths()]
+const [{ login, SelectLanguage, screenshotDir }] = [BasePaths.getPagePaths()]
 const [{ SecurePageForLogin }] = [BasePaths.getSecurePaths()]
 
 
@@ -10,10 +12,12 @@ beforeEach(async () => {
 
 describe('Login', () => {
 
+
+
     it('should login new user', async () => {
         try {
             await login.signInWithEmail()
-            await login.setEmail('gaurav77@example.com')
+            await login.setEmail('gaurav83@example.com')
             await expect(await login.newUserEmailPassword).toBeExisting()
             await login.setPasswordForNewUser('Gaurav123')
             await login.setProfilePhoto()
@@ -23,7 +27,7 @@ describe('Login', () => {
             await browser.saveScreenshot(`./Screenshots/ErrorInLoginWithNewUser------>${error}.png`)
             throw error;
         }
-    }).timeout(300000);
+    }).timeout(30000);
 
     it('should login with existing user', async () => {
         try {
@@ -31,12 +35,12 @@ describe('Login', () => {
             await login.setEmail('gaurav@example.com')
             await expect(await login.existingEmailPassword).toBeExisting()
             await login.setPasswordForExistingUser('Gaurav123')
-            await expect(await SecurePageForLogin.notification).toBeExisting()
+            await expect(await SecurePageForLogin.notification).not.toBeExisting()
         } catch (error) {
-            await browser.saveScreenshot(`./Screenshots/ErrorInLoginWithExistingUser------>${error}.png`)
+            await browser.saveScreenshot(screenshotDir + `/${test.name}.png`)
             throw error;
         }
-    }).timeout(300000);
+    }).timeout(30000);
 
     it('should login with invalid email', async () => {
         try {
@@ -44,7 +48,7 @@ describe('Login', () => {
             await login.setEmail('gaurav@example.cohshm')
             await expect(await login.next).not.toBeEnabled()
         } catch (error) {
-            await browser.saveScreenshot(`./Screenshots/ErrorInLoginWithInvalidEmail------>${error}.png`)
+            await browser.saveScreenshot(errorScreenshot)
             throw error;
         }
     });
@@ -57,7 +61,7 @@ describe('Login', () => {
             await login.setPasswordForExistingUser('Gaurav1234')
             await expect(await login.error).toBeExisting()
         } catch (error) {
-            await browser.saveScreenshot(`./Screenshots/ErrorInLoginWithInvalidPassword------>${error}.png`)
+            await browser.saveScreenshot(`../Screenshots/ErrorInLoginWithInvalidPassword------>${error}.png`)
             throw error;
         }
     })

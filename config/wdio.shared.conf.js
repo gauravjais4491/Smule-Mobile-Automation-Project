@@ -1,4 +1,4 @@
-exports.config = {
+const config = {
     //
     // ====================
     // Runner Configuration
@@ -97,7 +97,7 @@ exports.config = {
     baseUrl: '',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 300000,
+    waitforTimeout: 3000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
@@ -140,10 +140,10 @@ exports.config = {
     //     disableWebdriverScreenshotsReporting: true,
     // }]],
 
-    reporters: ["allure", ['allure', {
+    reporters: [['allure', {
         outputDir: 'allure-results',
-        disableWebdriverStepsReporting: false,
-        disableWebdriverScreenshotsReporting: false,
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: true,
     }]],
     // reporterOptions: {
     //     allure: {
@@ -310,3 +310,5 @@ exports.config = {
     // onReload: function(oldSessionId, newSessionId) {
     // }
 }
+
+module.exports = config
